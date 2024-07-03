@@ -66,6 +66,8 @@ const AudioBtn = ({
         const blob = new Blob([blob_bytes], { type: 'audio/wav' })
         const audioUrl = URL.createObjectURL(blob)
         audioRef.current!.src = audioUrl
+        // Load the audio to fix 'Audio can't be played on iOS devices. '
+        audioRef.current!.load()
       }
       catch (error) {
         setAudioState('initial')
